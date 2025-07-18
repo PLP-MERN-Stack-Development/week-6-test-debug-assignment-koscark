@@ -1,88 +1,80 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19935461&assignment_repo_type=AssignmentRepo)
-# Testing and Debugging MERN Applications
+ah# MERN Bug Tracker
 
-This assignment focuses on implementing comprehensive testing strategies for a MERN stack application, including unit testing, integration testing, and end-to-end testing, along with debugging techniques.
+A full-stack bug tracking application built with the MERN stack (MongoDB, Express, React, Node.js) and styled with Tailwind CSS v4 (CDN). The app demonstrates systematic testing, debugging, and error handling best practices.
 
-## Assignment Overview
-
-You will:
-1. Set up testing environments for both client and server
-2. Write unit tests for React components and server functions
-3. Implement integration tests for API endpoints
-4. Create end-to-end tests for critical user flows
-5. Apply debugging techniques for common MERN stack issues
+## Features
+- Report new bugs via a form
+- View a list of all reported bugs
+- Update bug statuses (open, in-progress, resolved)
+- Delete bugs
+- Robust error handling (backend middleware & React error boundary)
+- Comprehensive unit and integration tests (backend & frontend)
 
 ## Project Structure
-
 ```
-mern-testing/
-├── client/                 # React front-end
-│   ├── src/                # React source code
-│   │   ├── components/     # React components
-│   │   ├── tests/          # Client-side tests
-│   │   │   ├── unit/       # Unit tests
-│   │   │   └── integration/ # Integration tests
-│   │   └── App.jsx         # Main application component
-│   └── cypress/            # End-to-end tests
-├── server/                 # Express.js back-end
-│   ├── src/                # Server source code
-│   │   ├── controllers/    # Route controllers
-│   │   ├── models/         # Mongoose models
-│   │   ├── routes/         # API routes
-│   │   └── middleware/     # Custom middleware
-│   └── tests/              # Server-side tests
-│       ├── unit/           # Unit tests
-│       └── integration/    # Integration tests
-├── jest.config.js          # Jest configuration
-└── package.json            # Project dependencies
+mern-bug-tracker/
+  backend/         # Express API, Mongoose models, tests
+  frontend/        # React app, components, tests
 ```
 
-## Getting Started
+## Installation & Setup
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week6-Assignment.md` file
-4. Explore the starter code and existing tests
-5. Complete the tasks outlined in the assignment
+### Prerequisites
+- Node.js & npm
+- MongoDB (local or Atlas)
 
-## Files Included
+### Backend
+```bash
+cd backend
+npm install
+cp .env.example .env # or edit .env with your MongoDB URI
+npm run dev          # Starts server with nodemon
+```
 
-- `Week6-Assignment.md`: Detailed assignment instructions
-- Starter code for a MERN application with basic test setup:
-  - Sample React components with test files
-  - Express routes with test files
-  - Jest and testing library configurations
-  - Example tests for reference
+### Frontend
+```bash
+cd frontend
+npm install
+npm start            # Starts React app on http://localhost:3000
+```
 
-## Requirements
+### Tailwind CSS v4
+- Included via CDN in `frontend/public/index.html` (no config or PostCSS needed)
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Basic understanding of testing concepts
+## Running Tests
 
-## Testing Tools
+### Backend
+```bash
+cd backend
+npx jest
+```
+- Unit tests: `tests/validateBug.test.js`
+- Integration tests: `tests/bugRoutes.test.js` (uses jest-mock for DB)
 
-- Jest: JavaScript testing framework
-- React Testing Library: Testing utilities for React
-- Supertest: HTTP assertions for API testing
-- Cypress/Playwright: End-to-end testing framework
-- MongoDB Memory Server: In-memory MongoDB for testing
+### Frontend
+```bash
+cd frontend
+npm test
+```
+- Unit/component tests: `src/components/*.test.js`
 
-## Submission
+## Debugging Techniques Used
+- **Console logs**: Used in backend controllers and React error boundary
+- **Chrome DevTools**: Inspect network requests and React state
+- **Node.js Inspector**: Debug backend with `node --inspect server.js`
+- **Error boundaries**: React error boundary component for graceful UI errors
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+## Testing Approach & Coverage
+- **Backend**: Unit tests for helpers, integration tests for API (mocked DB)
+- **Frontend**: Unit/component tests for form, list, error boundary
+- **Coverage**: All critical logic and UI states are tested
 
-1. Complete all required tests (unit, integration, and end-to-end)
-2. Achieve at least 70% code coverage for unit tests
-3. Document your testing strategy in the README.md
-4. Include screenshots of your test coverage reports
-5. Demonstrate debugging techniques in your code
+## Error Handling
+- **Backend**: Centralized Express error middleware returns JSON errors
+- **Frontend**: Error boundary catches and displays UI errors
 
-## Resources
+## Intentional Bugs & Debugging
+- Try introducing typos or invalid data in the code to see error handling in action
+- Use console logs and DevTools to trace issues
 
-- [Jest Documentation](https://jestjs.io/docs/getting-started)
-- [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
-- [Supertest Documentation](https://github.com/visionmedia/supertest)
-- [Cypress Documentation](https://docs.cypress.io/)
-- [MongoDB Testing Best Practices](https://www.mongodb.com/blog/post/mongodb-testing-best-practices) 
+
